@@ -23,7 +23,7 @@
         {% if app.user %}
             <a href="{{ path('security_logout') }}" class="btn btn-info" title="Déconnexion {{ app.user.username }}">Déconnexion</a>
         {% else %}
-            <a href="{{ path('security_login') }}" class="btn btn-info" title="Connexion">Connexion</a>
+            <a href="{{ path('security_login') }}" class="btn btn-info" title="Connexion">Se connecter</a>
         {% endif%}
     </nav>
     <div class="container">
