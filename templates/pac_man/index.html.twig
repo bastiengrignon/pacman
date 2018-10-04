@@ -4,16 +4,18 @@
 
 {% block body %}
     {% if app.user %}
-        <h3>Bienvenue sur votre compte PacMan</h3>
+        <h3><span class="font-weight-bold">{{ user.username }}</span>, bienvenue sur votre compte PacMan</h3>
 
-        {{ form_start(formUser) }}
+        <a href="{{ path('create') }}" class="btn btn-success">Afficher les informations</a>
 
-        {{ form_row(formUser.user.username) }}
-        {{ form_row(formUser.food) }}
-        {{ form_row(formUser.color) }}
-        {{ form_row(formUser.family ) }}
+        {#{{ form_start(formUser) }}#}
 
-        {{ form_end(formUser) }}
+        {#{{ form_row(formUser.user.username) }}#}
+        {#{{ form_row(formUser.food) }}#}
+        {#{{ form_row(formUser.color) }}#}
+        {#{{ form_row(formUser.family ) }}#}
+
+        {#{{ form_end(formUser) }}#}
 
 
 

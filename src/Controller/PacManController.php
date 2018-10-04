@@ -3,37 +3,41 @@
 namespace App\Controller;
 
 use App\Entity\Informations;
-use App\Entity\User;
 use App\Form\InformationsType;
-use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PacManController extends AbstractController
 {
     /**
      * @Route("/pacman", name="pacman")
      */
-    public function index(Request $request, ObjectManager $manager, Informations $info)
+    public function index(UserRepository $repo)
     {
-        if (!$info) {
-            $info = new Informations();
-        }
+       $user = $repo->find(2);
+
+        return $this->render('pac_man/index.html.twig', [
+            'user' => $user
+        ]);
+    }
+    /**
+     * @Route("/create", name="create")
+     */
+    public function create(Request $request, ObjectManager $manager, Informations $info = null)
+    {
+
         $form = $this->createForm(InformationsType::class, $info);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             $manager->persist($info);
             $manager->flush();
         }
 
-        return $this->render('pac_man/index.html.twig', [
+        return $this->render(':pac_man:index.html.twig',[
             'formUser' => $form->createView()
         ]);
     }
