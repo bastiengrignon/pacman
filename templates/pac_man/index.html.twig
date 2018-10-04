@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} PacMan !{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <h3>Bienvenue sur votre compte PacMan</h3>
+
+        {{ form_start(formUser) }}
+
+        {{ form_row(formUser.user.username) }}
+        {{ form_row(formUser.food) }}
+        {{ form_row(formUser.color) }}
+        {{ form_row(formUser.family ) }}
+
+        {{ form_end(formUser) }}
+
+
+
+
+
+    {% else %}
+        <h3>Connectez-vous pour accéder à votre PacMan</h3>
+    {% endif %}
+{% endblock %}

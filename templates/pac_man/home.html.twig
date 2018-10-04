@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page d'accueil PacMan {% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <h1>Bienvenue sur PacMan</h1>
+        <p>Pour commencer, inscrivez-vous</p>
+        <a href="{{ path('security_registration') }}" class="btn btn-info">S'inscrire</a>
+        <br><br>
+        <p>Ou si vous avez déjà un compte, connectez-vous !</p>
+        <a href="{{ path('security_login') }}" class="btn btn-info">Se connecter</a>
+    </div>
+{% endblock %}
