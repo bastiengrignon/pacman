@@ -3,6 +3,7 @@
 {% block title %} Page d'accueil PacMan {% endblock %}
 
 {% block body %}
+    {% if not app.user %}
     <div class="text-center">
         <h1>Bienvenue sur PacMan</h1>
         <p>Pour commencer, inscrivez-vous</p>
@@ -11,4 +12,7 @@
         <p>Ou si vous avez déjà un compte, connectez-vous !</p>
         <a href="{{ path('security_login') }}" class="btn btn-info">Se connecter</a>
     </div>
+    {% else %}
+        <h5 class="text-center">Vous pouvez changer les informations concernant votre PacMan dans l'onglet "Afficher mon PacMan"</h5>
+    {% endif %}
 {% endblock %}

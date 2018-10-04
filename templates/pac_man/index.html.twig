@@ -4,21 +4,47 @@
 
 {% block body %}
     {% if app.user %}
-        <h3><span class="font-weight-bold">{{ user.username }}</span>, bienvenue sur votre compte PacMan</h3>
+        <h3><span class="font-weight-bold">{{ app.user.username }}</span>, bienvenue sur votre compte PacMan</h3>
 
-        <a href="{{ path('create') }}" class="btn btn-success">Afficher les informations</a>
+        <form action="{{ path('modify',{'id': app.user.id}) }}">
+            <div class="form-group">
+                <label for="">Age du PacMan</label>
+                <input type="text" class="form-control" id="age" placeholder="Age" value="{{ app.user.age }}">
+            </div>
+            <div class="form-group">
+                <label for="">Famille PacMan</label>
+                <input type="text" class="form-control" id="family" placeholder="Famille" value="{{ app.user.family }}">
+            </div>
+            <div class="form-group">
+                <label for="">Couleur du PacMan</label>
+                <input type="text" class="form-control" id="color" placeholder="Couleur" value="{{ app.user.color }}">
+            </div>
+            <div class="form-group">
+                <label for="">Nourriture</label>
+                <input type="text" class="form-control" id="food" placeholder="Nourriture" value="{{ app.user.food }}">
+            </div>
+            <button type="submit" class="btn btn-success">Enregistrer les informations</button>
+        </form>
 
         {#{{ form_start(formUser) }}#}
+        {#{{ form_row(formUser.username, {'label': "Nom du PacMan" , 'attr': {'placeholder': "Nom d'utilisateur", 'value': app.user.username}}) }}#}
+        {#{{ form_row(formUser.password, {'label': "Mot de passe" , 'attr': {'placeholder': "Mot de passe", 'disabled': true, 'value': app.user.password}}) }}#}
+        {#{{ form_row(formUser.age, {'label': "Age du PacMan" , 'attr': {'placeholder': "Age du PacMan",'value': app.user.age }}) }}#}
 
-        {#{{ form_row(formUser.user.username) }}#}
-        {#{{ form_row(formUser.food) }}#}
-        {#{{ form_row(formUser.color) }}#}
-        {#{{ form_row(formUser.family ) }}#}
-
+        {#<div class="form-group">#}
+            {#<label for="">Famille PacMan</label>#}
+            {#<input type="text" class="form-control" id="family" placeholder="Famille" value="{{ app.user.family }}">#}
+        {#</div>#}
+        {#<div class="form-group">#}
+            {#<label for="">Couleur du PacMan</label>#}
+            {#<input type="text" class="form-control" id="color" placeholder="Couleur" value="{{ app.user.color }}">#}
+        {#</div>#}
+        {#<div class="form-group">#}
+            {#<label for="">Nourriture</label>#}
+            {#<input type="text" class="form-control" id="food" placeholder="Nourriture" value="{{ app.user.food }}">#}
+        {#</div>#}
+        {#<button type="submit" class="btn btn-success">Enregistrer les informations</button>#}
         {#{{ form_end(formUser) }}#}
-
-
-
 
 
     {% else %}

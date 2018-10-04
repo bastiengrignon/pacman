@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Informations;
-use App\Form\InformationsType;
+use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,21 +23,27 @@ class PacManController extends AbstractController
             'user' => $user
         ]);
     }
-    /**
-     * @Route("/create", name="create")
-     */
-    public function create(Request $request, ObjectManager $manager, Informations $info = null)
-    {
 
-        $form = $this->createForm(InformationsType::class, $info);
+    /**
+     * @Route("/pacman/modify", name="modify")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param User|null $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function create(Request $request, ObjectManager $manager, User $user = null)
+    {
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $manager->persist($info);
+            $manager->persist($user);
             $manager->flush();
+
+            return $this->redirectToRoute('pacman');
         }
 
-        return $this->render(':pac_man:index.html.twig',[
+        return $this->render('pac_man/index.html.twig',[
             'formUser' => $form->createView()
         ]);
     }
