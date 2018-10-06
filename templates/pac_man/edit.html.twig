@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Modification
+{% endblock %}
+
+{% block body %}
+    {{ form_start(formUser) }}
+        {% do formUser.username.setRendered() %}
+        {% do formUser.password.setRendered() %}
+        {{ form_row(formUser.age,      {'label': "Age du PacMan" , 'attr': {'placeholder': "Age du PacMan",'value': app.user.age } }) }}
+        {{ form_row(formUser.family,   {'label': "Sa Famille" ,    'attr': {'placeholder': "Famille du PacMan",'value': app.user.family } }) }}
+        {{ form_row(formUser.color,    {'label': "Sa Couleur" ,    'attr': {'placeholder': "Couleur du PacMan",'value': app.user.color } }) }}
+        {{ form_row(formUser.food,     {'label': "Sa nourriture" , 'attr': {'placeholder': "Nourriture du PacMan",'value': app.user.food } }) }}
+
+    <button type="submit" class="btn btn-success">Enregistrer les informations</button>
+    {{ form_end(formUser) }}
+{% endblock %}
+

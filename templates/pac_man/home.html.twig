@@ -6,13 +6,19 @@
     {% if not app.user %}
     <div class="text-center">
         <h1>Bienvenue sur PacMan</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Pac-Man.svg/2000px-Pac-Man.svg.png" width="200" height="200">
         <p>Pour commencer, inscrivez-vous</p>
         <a href="{{ path('security_registration') }}" class="btn btn-info">S'inscrire</a>
         <br><br>
-        <p>Ou si vous avez déjà un compte, connectez-vous !</p>
+        <p>Ou connectez-vous, si vous êtes déjà inscrit</p>
         <a href="{{ path('security_login') }}" class="btn btn-info">Se connecter</a>
     </div>
     {% else %}
-        <h5 class="text-center">Vous pouvez changer les informations concernant votre PacMan dans l'onglet "Afficher mon PacMan"</h5>
+        <div class="text-center">
+            <h5>Vous pouvez changer les informations concernant votre PacMan dans l'onglet "Afficher mon PacMan"</h5>
+            <a href="{{ path('pacman') }}">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Pac-Man.svg/2000px-Pac-Man.svg.png" width="200" height="200">
+            </a>
+        </div>
     {% endif %}
 {% endblock %}
